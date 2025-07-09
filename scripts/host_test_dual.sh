@@ -23,4 +23,4 @@ echo "@cert-authority localhost $(cat ./host_ca.pub)" > ./known_hosts
 
 # 5. Use user_key to login server, specify known_hosts
 echo "Trying to connect to docker ssh server with user cert (bidirectional CA verification)"
-ssh -i ./user_key  -o UserKnownHostsFile=./known_hosts -o StrictHostKeyChecking=yes -p 2222 demo-user@localhost 
+ssh -i ./user_key -o UserKnownHostsFile=./known_hosts -o StrictHostKeyChecking=yes -p 2222 demo-user@localhost 
