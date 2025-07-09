@@ -19,4 +19,4 @@ ssh-keygen -s ./user_ca -I local_user_cert -n demo-user -V +5m ./user_key.pub
 
 # 4. Use user_key to login server (no @cert-authority in known_hosts)
 echo "Trying to connect to docker ssh server with user cert (unidirectional verification)"
-ssh -i ./user_key -p 2222 demo-user@localhost 
+ssh -vvv -i ./user_key  -o UserKnownHostsFile=./known_hosts -p 2222 demo-user@localhost 
