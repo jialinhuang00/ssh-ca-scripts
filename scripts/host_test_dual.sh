@@ -3,12 +3,11 @@ set -e
 
 # 0. Auto copy CA files from container
 docker cp ssh-ca-demo:/etc/ssh/user_ca ./user_ca
-docker cp ssh-ca-demo:/etc/ssh/user_ca.pub ./user_ca.pub
 docker cp ssh-ca-demo:/etc/ssh/host_ca.pub ./host_ca.pub
 
 # 1. Check if CA files exist (after docker cp)
-if [ ! -f ./user_ca ] || [ ! -f ./user_ca.pub ] || [ ! -f ./host_ca.pub ]; then
-  echo "Please docker cp ssh-ca-demo:/etc/ssh/user_ca . and user_ca.pub and host_ca.pub to local first"
+if [ ! -f ./user_ca ] || [ ! -f ./host_ca.pub ]; then
+  echo "Please docker cp ssh-ca-demo:/etc/ssh/user_ca . and host_ca.pub to local first"
   exit 1
 fi
 
