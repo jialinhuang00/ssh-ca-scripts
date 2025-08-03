@@ -8,12 +8,10 @@ echo "=== Generate User CA and Host CA ==="
 ssh-keygen -f user_ca -N "" -t ed25519 -C "User CA"
 ssh-keygen -f host_ca -N "" -t ed25519 -C "Host CA"
 
-echo "=== Generate User key and Host key ==="
-ssh-keygen -f user_key -N "" -t ed25519 -C "User Key"
+echo "=== Generate Host key ==="
 ssh-keygen -f host_key -N "" -t ed25519 -C "Host Key"
 
 echo "=== Sign certificates with CA ==="
-ssh-keygen -s user_ca -I user_cert -n demo-user -V +10m user_key.pub
 ssh-keygen -s host_ca -I host_cert -h -n localhost,demo-server -V +10m host_key.pub
 
 echo "=== Set permissions ==="
